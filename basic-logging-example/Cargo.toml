@@ -1,0 +1,10 @@
+[package]
+name = "basic-logging-example"
+version = "0.1.0"
+authors = ["pfried <philipsfried@gmail.com>"]
+
+[dependencies]
+log = "*"
+env_logger = "*"
+test-logger = "*"
+
