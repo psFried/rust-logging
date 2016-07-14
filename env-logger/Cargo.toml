@@ -1,0 +1,9 @@
+[package]
+name = "example"
+version = "0.1.0"
+authors = ["Phil Fried <philipsfried@gmail.com>"]
+
+[dependencies]
+log = "*"
+env_logger = "*"
+

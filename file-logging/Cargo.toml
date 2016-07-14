@@ -1,5 +1,5 @@
 [package]
-name = "file-logging"
+name = "example"
 version = "0.1.0"
 authors = ["pfried <philipsfried@gmail.com>"]
 

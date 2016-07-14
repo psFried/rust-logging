@@ -11,7 +11,7 @@ extern crate log4rs_rolling_file;
 use std::thread;
 use std::time::Duration;
 
-fn log_some_stuff() {
+pub fn log_some_stuff() {
     trace!("This is a trace statement");
     debug!("This is a debug statement");
     info!("This is an info statement");
@@ -37,13 +37,20 @@ fn main() {
 }
 
 
-test!{log_output_prints_when_this_test_fails, {
-    log_some_stuff();
-    panic!("Holy guacamole!");
-}}
+#[cfg(test)]
+mod test {
+    use test_logger;
+    use super::*;
 
-test!{no_log_output_here_because_this_test_passes, {
-    info!("Might not see this unless you run tests using `cargo test -- --nocapture`")
-    // Caveat - log output doesn't always get captured perfectly since it is written by a background thread
-}}
+    test!{log_output_prints_when_this_test_fails, {
+        log_some_stuff();
+        panic!("Holy guacamole!");
+    }}
+
+    test!{no_log_output_here_because_this_test_passes, {
+        info!("Might not see this unless you run tests using `cargo test -- --nocapture`")
+        // Caveat - log output doesn't always get captured perfectly since it is written by a background thread
+    }}
+}
+
 
